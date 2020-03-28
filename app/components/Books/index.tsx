@@ -25,7 +25,7 @@ class Books extends React.Component<BooksProps, BooksState> {
     super(props);
   }
   componentDidMount() {
-    console.log(this.props);
+
   }
   onBookClick = (bookId: number) => {
     const { bookList } = this.props;
@@ -48,6 +48,7 @@ class Books extends React.Component<BooksProps, BooksState> {
     return (
       <div className={styles.booksPanelsBox}>
         <div className={styles.bookList}>
+          
           {bookList.map((book) => (
             <BookRow
               key={book.id}

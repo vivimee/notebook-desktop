@@ -1,0 +1,4 @@
+.article-row {}
+.article-row.active {
+  font-weight: bold;
+}

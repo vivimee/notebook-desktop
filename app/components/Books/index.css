@@ -1,0 +1,12 @@
+.booksPanelsBox {
+  height: 100%;
+  display: flex;
+}
+
+.bookList {}
+
+.articleList {}
+
+.articleBlock {
+  flex-grow: 1;
+}

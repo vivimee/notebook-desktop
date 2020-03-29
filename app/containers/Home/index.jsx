@@ -2,15 +2,18 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import path from 'path';
 import fse from 'fs-extra';
 import Books from '../../components/Books';
 import styles from './index.css';
-import { setRepoAndInitData } from '../../actions/notebook';
+import { pullRepository } from '../../actions/notebook';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
+import { IconButton, Button } from '@material-ui/core';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -32,7 +35,7 @@ class Home extends React.Component {
     };
   }
   componentDidMount() {
-    fse.ensureDirSync(path.resolve('.database'));
+    this.pullRepo();
   }
   handleSanckbarClose = () => {
     const { snackbar } = this.state;
@@ -41,38 +44,25 @@ class Home extends React.Component {
   handleBackdropClose = () => {
     this.setState({ loading: { open: false } });
   };
-  loadGithubRepo = () => {};
-  onFetchClick = () => {
-    const repo = document.querySelector('#repo').value.trim();
-    const password = document.querySelector('#password').value.trim();
-    const ghReopReg = /^https:\/\/github\.com\/([0-9a-zA-Z-_]+)+\/([0-9a-zA-Z-_]+)+\.git$/;
-    if (!ghReopReg.test(repo)) {
-      this.setState({
-        snackbar: {
-          open: true,
-          message: '请输入合法的仓库地址',
-          severity: 'error'
-        }
-      });
-      return;
-    }
-    if (!password) {
-      this.setState({
-        snackbar: { open: true, message: '请输入密码', severity: 'error' }
-      });
-      return;
-    }
-    this.props.setRepoAndInitData(repo, password);
-  };
+  pullRepo = () => {
+    const { reduxState: { repository }, pullRepository } = this.props;
+    pullRepository(repository);
+  }
+
   render() {
     const { snackbar, loading } = this.state;
     return (
       <div className={styles.dashboard}>
         <div className={styles.toolsbar}>
-          <Link to={routes.LOGIN}>返回</Link>
-          <input id="repo" placeholder="github仓库地址" />
-          <input id="password" placeholder="密码" type="password" />
-          <button onClick={this.onFetchClick}>拉取</button>
+          <Link to={routes.LOGIN}>
+            <IconButton>
+            <AccountCircleIcon />
+            </IconButton>
+            
+          </Link>
+          <IconButton onClick={this.pullRepo}>
+            <CloudDownloadIcon />
+          </IconButton>
         </div>
         <Books />
         <Snackbar
@@ -101,5 +91,5 @@ class Home extends React.Component {
 }
 
 export default connect(state => ({ reduxState: state }), {
-  setRepoAndInitData
+  pullRepository
 })(Home);

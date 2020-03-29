@@ -52,8 +52,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "Notebook",
+    "appId": "org.develar.Notebook",
     "files": [
       "dist/",
       "node_modules/",
@@ -275,16 +275,20 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@hot-loader/react-dom": "^16.12.0",
     "@material-ui/core": "^4.9.7",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.46",
     "connected-react-router": "^6.6.1",
     "core-js": "^3.6.4",
+    "dayjs": "^1.8.23",
     "devtron": "^1.4.0",
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.6",
     "electron-store": "^5.1.1",
     "electron-updater": "^4.2.0",
     "fs-extra": "^9.0.0",
+    "hash-sum": "^2.0.0",
     "history": "^4.10.1",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.19",
@@ -294,7 +298,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "simple-git": "^1.132.0",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.16",
+    "wangeditor": "^3.1.1"
   },
   "devEngines": {
     "node": ">=7.x",
@@ -335,8 +340,6 @@
     ]
   },
   "husky": {
-    "hooks": {
-      
-    }
+    "hooks": {}
   }
 }

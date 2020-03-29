@@ -1,16 +1,15 @@
 import * as React from 'react';
-import styles from './index.css';
+import ListItem from '@material-ui/core/ListItem';
+
+import ListItemText from '@material-ui/core/ListItemText';
 
 const ArticleRow = props => {
-  const { article, active, onClick } = props;
-  const { title } = article;
+  const { article, onClick, active } = props;
+  const { name } = article;
   return (
-    <div
-      className={`${styles['article-row']} ${active ? styles.active : ''}`}
-      onClick={() => onClick(article.id)}
-    >
-      <span>{title}</span>
-    </div>
+    <ListItem selected={active} button onClick={() => onClick(article.id)}>
+      <ListItemText>{name}</ListItemText>
+    </ListItem>
   );
 };
 

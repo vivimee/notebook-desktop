@@ -5,9 +5,29 @@
   display: flex;
 }
 
-.bookList {}
+.bookList {
+  min-width: 100px;
+}
 
-.articleList {}
+.articleList {
+  min-width: 100px;
+  margin: 0 10px;
+  position: relative;
+}
+.articleList::before, .articleList::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #e1e1e1;
+}
+.articleList::before {
+  left: 0;
+}
+.articleList::after {
+  right: 0;
+}
 
 .articleBlock {
   flex-grow: 1;

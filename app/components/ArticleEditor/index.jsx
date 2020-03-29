@@ -1,16 +1,7 @@
 import * as React from 'react';
-
-export interface ArticleEditorProps {
-  content: string;
-  onChange: Function;
-}
  
-export interface ArticleEditorState {
-  
-}
- 
-class ArticleEditor extends React.Component<ArticleEditorProps, ArticleEditorState> {
-  constructor(props: ArticleEditorProps) {
+class ArticleEditor extends React.Component {
+  constructor(props) {
     super(props);
     this.state = { };
   }

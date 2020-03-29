@@ -1,14 +1,7 @@
 import * as React from 'react';
 import styles from './index.css';
-import { Article } from '../../models/types';
 
-export interface ArticleRowProps {
-  article: Article;
-  active: boolean;
-  onClick: Function;
-}
-
-const ArticleRow: React.SFC<ArticleRowProps> = props => {
+const ArticleRow = props => {
   const { article, active, onClick } = props;
   const { title } = article;
   return (

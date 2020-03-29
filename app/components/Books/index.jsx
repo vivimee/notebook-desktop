@@ -4,40 +4,28 @@ import styles from './index.css';
 import BookRow from '../BookRow';
 import ArticleRow from '../ArticleRow';
 import ArticleEditor from '../ArticleEditor';
-import { Book, Article } from '../../models/types';
 import { setActiveArticle, setActiveBook, updateArticleContent } from '../../actions/notebook'
 
-export interface BooksProps {
-  bookList: Array<Book>;
-  activeBook: Book;
-  activeArticle: Article;
-  setActiveBook: Function;
-  setActiveArticle: Function;
-  updateArticleContent: Function;
-}
 
-export interface BooksState {
 
-}
-
-class Books extends React.Component<BooksProps, BooksState> {
-  constructor(props: BooksProps) {
+class Books extends React.Component {
+  constructor(props) {
     super(props);
   }
   componentDidMount() {
 
   }
-  onBookClick = (bookId: number) => {
+  onBookClick = (bookId) => {
     const { bookList } = this.props;
     const book = bookList.filter((item) => item.id === bookId)[0];
     this.props.setActiveBook(book);
   };
-  onArticleClick = (articleId: number) => {
+  onArticleClick = (articleId) => {
     const { activeBook } = this.props;
     const article = activeBook.articles.filter((item) => item.id === articleId)[0];
     this.props.setActiveArticle(article);
   };
-  onArticleChange = (content: string) => {
+  onArticleChange = (content) => {
     const { activeArticle, updateArticleContent, activeBook } = this.props;
     updateArticleContent(activeArticle, content, activeBook);
   }
@@ -59,7 +47,7 @@ class Books extends React.Component<BooksProps, BooksState> {
           ))}
         </div>
         <div className={styles.articleList}>
-          {((activeBook || {}).articles || []).map((article: Article) => (
+          {((activeBook || {}).articles || []).map((article) => (
             <ArticleRow
               key={article.id}
               article={article}

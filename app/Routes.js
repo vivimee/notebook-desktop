@@ -2,17 +2,15 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import routes from './constants/routes.json';
 import App from './containers/App';
-import HomePage from './containers/HomePage';
 import Home from './containers/Home/index';
-import CounterPage from './containers/CounterPage';
+import Login from './containers/Login/index';
 
 export default function Routes() {
   return (
     <App>
       <Switch>
-        <Route path={routes.COUNTER} component={CounterPage} />
         <Route path={routes.DASHBOARD} component={Home} />
-        <Route path={routes.HOME} component={HomePage} />
+        <Route path={routes.LOGIN} component={Login} />
       </Switch>
     </App>
   );

@@ -34,7 +34,7 @@ const initialState = {
   activeArticle: null
 };
 
-export default function notebook(state = initialState, action: Action<string>) {
+export default function notebook(state = initialState, action) {
   switch (action.type) {
     case SET_ACTIVE_BOOK:
       const newbook = action.payload;
